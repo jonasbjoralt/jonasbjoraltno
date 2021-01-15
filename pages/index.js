@@ -12,8 +12,9 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Inline Blender Gas Calculator
         </h1>
+        <p> Input your current gas, and your desired gas below. </p>
 
         <InlineCalculator></InlineCalculator>
       </main>
