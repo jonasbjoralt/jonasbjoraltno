@@ -1,25 +1,10 @@
 import React, {useEffect, useState} from 'react'; 
+import styles from '../styles/Form.module.css';
+import { useInput } from '../utils/useInput';
+
 
 
 export default function InlineCalculator (props) {
-    function useInput(label): [number, JSX.Element]{
-        const [value, setValue] = useState(0); 
-        const name: string = Math.random().toString(); 
-
-        function handleChange(e: React.ChangeEvent<HTMLInputElement>): void{
-            var newValue = parseFloat(e.target.value);
-            newValue = newValue === NaN ? 0 : newValue;
-            setValue(newValue);
-        }
-        const input = (
-            <>
-                <label htmlFor={label}>{label}</label>
-                <input type='number' name={name} placeholder={label} value={value.toString()} onChange={e => handleChange(e)}></input>
-            </>
-        )
-        return [value, input]
-    }
-
     let [currentBar, currentBarInput] = useInput('Current Pressure (Bar)'); 
     let [currentO2, currentO2Input] = useInput('Current Oxygen (%)'); 
     let [currentHe, currentHeInput] = useInput('Current Helium (%)'); 
@@ -33,17 +18,19 @@ export default function InlineCalculator (props) {
         const [blenderHe, setBlenderHe] = useState<Number>(0);
 
         useEffect(() => {
-            currentO2 = currentO2 || 0;
-            desiredO2 = desiredO2 || 0;
-            currentHe = currentHe || 0;
-            desiredHe = desiredHe || 0;
+            currentO2 = currentO2/100 || 0;
+            desiredO2 = desiredO2/100 || 0;
+            currentHe = currentHe/100 || 0;
+            desiredHe = desiredHe/100 || 0;
 
             const totalGasToAdd: number = desiredBar - currentBar; 
-            const deltaO2 = ((desiredO2/100)*desiredBar) - ((currentO2/100)*currentBar);
-            const deltaHe = ((desiredHe/100)*desiredBar) - ((currentHe/100)*currentBar); 
-            const deltaN2 = ((100-desiredO2-desiredHe)*desiredBar) - ((100-currentO2-currentHe)*currentBar);
+            const deltaO2 = ((desiredO2)*desiredBar) - ((currentO2)*currentBar);
+            const deltaHe = ((desiredHe)*desiredBar) - ((currentHe)*currentBar); 
+            const deltaN2 = ((1-desiredO2-desiredHe)*desiredBar) - ((1-currentO2-currentHe)*currentBar);
 
-            const checkTotal = totalGasToAdd === (deltaO2+deltaHe+deltaN2);
+            const sumDelta = deltaO2 + deltaHe + deltaN2;
+
+            const checkTotal = totalGasToAdd === sumDelta;
 
             console.log(deltaO2);
 
@@ -59,15 +46,15 @@ export default function InlineCalculator (props) {
 
     return (
         <>
-        <form>
-            <fieldset>
-                <legend> Current Mix </legend>
+        <form className={styles.formContainer}>
+            <fieldset className={styles.responsiveForm}>
+                <legend> Nåværende Mix </legend>
                 {currentBarInput}
                 {currentO2Input}
                 {currentHeInput}
             </fieldset>
-            <fieldset>
-                <legend> Desired Mix</legend>
+            <fieldset className={styles.responsiveForm}>
+                <legend> Ønsket Mix</legend>
                 {desiredBarInput}
                 {desiredO2Input}
                 {desiredHeInput}
@@ -80,7 +67,7 @@ export default function InlineCalculator (props) {
             {blenderHe > 0 && <li>He: {blenderHe.toFixed(2)}%</li>}            
         </ul>
 
-        <p>DISCLAIMER: Check your gases, save our asses. The gas you dive is your responsibility, and yours alone. </p>
+        <p>DISCLAIMER: Sjekk og analyser gassen! Ikke stol på rare verktøy på nett. Vær også obs på kompressorens begrensninger på O2. </p>
         </>
     )
 }

@@ -1,0 +1,22 @@
+.formContainer {
+  width: 100%;
+}
+
+.responsiveForm {
+  display: flex;
+}
+
+.responsiveForm label {
+  flex-grow: 1;
+}
+
+.responsiveForm input {
+  flex-shrink: 1;
+}
+
+@media screen and (max-width: 980px) {
+  .responsiveForm {
+    flex-direction: column;
+    width: 100%;
+  }
+}
