@@ -19,6 +19,8 @@ export default function Home() {
           Tilgjengelige verktøy:
           <li>
             <a href='/gas-mixer'> Gass-Blender med mixer </a>
+          </li>
+          <li>
             <a href='/gas-limits'> Gass-kalkulator </a>
           </li>
         </ul>
