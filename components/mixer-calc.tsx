@@ -1,6 +1,7 @@
 /* eslint-disable prefer-const */
 import React, {useEffect, useState} from 'react'; 
 import styles from '../styles/Form.module.css';
+import calculateBlenderSettings from '../utils/blender-calculations';
 import { useInput } from '../utils/useInput';
 
 
@@ -19,22 +20,19 @@ export default function InlineCalculator (): JSX.Element {
     const [blenderHe, setBlenderHe] = useState<number>(0);
 
     useEffect(() => {
-      currentO2 = currentO2/100 || 0;
-      desiredO2 = desiredO2/100 || 0;
-      currentHe = currentHe/100 || 0;
-      desiredHe = desiredHe/100 || 0;
+      const [o2SetPoint, heSetPoint] = calculateBlenderSettings(
+        {
+          bars:currentBar,
+          oxygenPercentage: currentO2,
+          heliumPercentage: currentHe
+        },{
+          bars: desiredBar,
+          oxygenPercentage: desiredO2,
+          heliumPercentage: desiredHe
+        }
+      );
 
-      const totalGasToAdd: number = desiredBar - currentBar; 
-      const deltaO2 = ((desiredO2)*desiredBar) - ((currentO2)*currentBar);
-      const deltaHe = ((desiredHe)*desiredBar) - ((currentHe)*currentBar); 
-
-
-      const o2SetPoint = ((deltaO2/totalGasToAdd)*100);
-      const heSetPoint = ((deltaHe/totalGasToAdd)*100);
-
-      console.log(deltaO2);
-
-      if(totalGasToAdd > 0 && deltaO2 > 0){
+      if(desiredBar - currentBar > 0 && o2SetPoint > 0){
         setBlenderO2(o2SetPoint);
         setBlenderHe(heSetPoint);
       }
