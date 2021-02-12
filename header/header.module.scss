@@ -1,0 +1,65 @@
+.header {
+    display: grid;
+    border-bottom: solid 2px darkslategrey;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: header;
+    grid-template-areas: "logo nav";
+    z-index: 100;
+}
+
+.navigation{
+    display: grid;
+    grid-area: nav;
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    margin: 0.4em 0;
+
+    a{
+        margin: 0.2em 0.5em;
+        padding: 0.4em 0.8em;
+        text-align: center;
+    }
+
+    a:hover{
+        color: #0070f3;
+    }
+}
+
+.mainPageLink{
+    color: #0070f3;
+    margin: 0.2em 0.5em;
+    padding: 0.4em 0.8em;
+    grid-area: logo;
+}
+
+.navToggle{
+    background-color: transparent;
+    border: none;
+}
+
+@media (max-width: 900px){
+    .header{
+        grid-template-areas: "logo toggle" "nav nav";
+    }
+
+    .navToggle{
+         display: block;
+    }
+
+    .navigation{
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: none;
+        justify-content: stretch;
+        justify-items: stretch;
+
+        a{
+            border: solid dodgerblue 0.1em;
+            border-radius: 0.4em;
+        }
+    }
+
+}
