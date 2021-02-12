@@ -1,33 +1,33 @@
+import React from 'react';
 import Head from 'next/head'
 import InlineCalculator from '../components/mixer-calc'
 import styles from '../styles/Home.module.css'
+import Page from '../page/page';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Blender-Kalkulator</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Dykkeverktøy</title>
+        <link rel="icon" href="/whale.png" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Dykkegass-verktøy 
-        </h1>
-        <p> Obs! Husk at hva du dykker med, og puster er ditt eget ansvar. Ikke stol blindt på alt du finner på nettet. </p>
+      <Page>
+        <p>Lenker til verktøy: </p>
         <ul>
-          Tilgjengelige verktøy:
           <li>
-            <a href='/gas-mixer'> Gass-Blender med mixer </a>
+            <Link href="/gas-mixer">
+              <a>Blender</a>
+            </Link>
           </li>
           <li>
-            <a href='/gas-limits'> Gass-kalkulator </a>
+            <Link href="/gas-limits">
+              <a>Kalkulator</a>
+            </Link>
           </li>
         </ul>
-      </main>
-
-      <footer className={styles.footer}>
-      </footer>
-    </div>
+      </Page>
+    </>
   )
 }

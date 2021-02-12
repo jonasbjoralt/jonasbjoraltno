@@ -14,9 +14,13 @@
   flex-shrink: 1;
 }
 
+.warningText{
+  font-weight: bold;
+  color: crimson;
+}
+
 @media screen and (max-width: 980px) {
   .responsiveForm {
-    flex-direction: column;
-    width: 100%;
+    flex-direction: column; 
   }
 }
