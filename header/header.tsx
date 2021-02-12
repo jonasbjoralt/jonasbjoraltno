@@ -21,7 +21,7 @@ export default function Header(): JSX.Element {
           <h2 className={css.mainPageLink}>Dykkeverktøy</h2>
         </a>
       </Link>
-      {(!isSmallScreen || isNavVisible) && 
+      {(!isSmallScreen || isNavVisible) && 
       <nav className={css.navigation}>
         <Link href="/gas-mixer">
           <a>Blender</a>

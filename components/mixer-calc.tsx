@@ -83,7 +83,7 @@ export default function InlineCalculator (): JSX.Element {
         <>
           <p className={styles.warningText}>Advarsel:</p>
           <ul>
-            {warnings.map(item => (<li>{item}</li>))}
+            {warnings.map((item, index) => (<li key={index}>{item}</li>))}
           </ul>
         </>
       )}
