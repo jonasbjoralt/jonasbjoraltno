@@ -27,5 +27,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Testing
 
-Some pages are subject to testing. Calculations are done beforehand by spreadsheet and plotted into unit-test. 
- - [Spreadsheet for blender-calculator](https://drive.google.com/file/d/1sl5Bha41-sUxYW3KYOiMEZDVqvrWz5tj/view?usp=sharing)
+Some pages are subject to testing. Calculations are done beforehand by spreadsheet and plotted into unit-test.
+
+- [Spreadsheet for blender-calculator](https://drive.google.com/file/d/1sl5Bha41-sUxYW3KYOiMEZDVqvrWz5tj/view?usp=sharing)
+
+## Disclaimer
+
+Dive at your own risk etc. Check your gases, save your asses.
