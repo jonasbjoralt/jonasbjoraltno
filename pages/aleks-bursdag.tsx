@@ -1,3 +1,9 @@
+import Head from 'next/head'
+import React from 'react'
+import InlineCalculator from '../components/mixer-calc'
+import Page from '../page/page'
+import styles from '../styles/Home.module.css'
+
 export default function GasMixer(): JSX.Element {
   return(
     <>
@@ -5,14 +11,35 @@ export default function GasMixer(): JSX.Element {
         <title>ÙwÚ Grattis! x'D </title>
         <link rel="icon" href="whale.png" />
       </Head>
+      <main>
 
-      <Page>
-        <h1>
-          Gratulerer med dagen! 
+        <h1 style={{
+          color: 'hotpink',
+          fontSize: '3rem',
+          textShadow: '2px 2px 5px yellow',
+          fontFamily: '"Comic Sans MS", cursive, sans-serif',
+          textAlign: 'center',
+          margin: '20px 0'
+        }}>
+          Gratulerer med dagen! 🎉🎈
         </h1>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/6n3pFFPSlW4?si=qml0HRWKj8rayQbj?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe src="https://archive.org/embed/gnomed" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen autoplay></iframe>
-      </Page>
+        <iframe 
+          src="https://archive.org/embed/gnomed&amp;autoplay=1&amp;mute=0" 
+          width="640" 
+          height="480" 
+          frameBorder="0" 
+          webkitAllowFullScreen={true} 
+          mozAllowFullScreen={true} 
+          allowFullScreen={true} 
+          style={{
+            border: '5px solid hotpink',
+            borderRadius: '15px',
+            boxShadow: '0 0 20px magenta',
+            margin: '20px auto',
+            display: 'block'
+          }}
+        /> 
+        </main>
     </>
   )
 }
