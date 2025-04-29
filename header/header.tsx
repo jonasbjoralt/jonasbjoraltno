@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import css from "./header.module.scss"; 
-import { useMediaPredicate } from "react-media-hook";
 import Image from "next/image";
 
 export default function Header(): JSX.Element {
   const [isNavVisible, setIsNavVisible] = useState(false); 
-  const isSmallScreen = useMediaPredicate("(max-width: 900px)");
 
   function toggleNav(): void {
     setIsNavVisible(!isNavVisible); 
   }
 
-  console.log(!isSmallScreen || isNavVisible);
+  console.log(isNavVisible);
 
   return(
     <header className={css.header}>
@@ -21,7 +19,7 @@ export default function Header(): JSX.Element {
           <h2 className={css.mainPageLink}>Dykkeverktøy</h2>
         </a>
       </Link>
-      {(!isSmallScreen || isNavVisible) && 
+      {(isNavVisible) && 
       <nav className={css.navigation}>
         <Link href="/gas-mixer">
           <a>Blender</a>
@@ -31,7 +29,7 @@ export default function Header(): JSX.Element {
         </Link>
       </nav>
       }
-      {isSmallScreen && 
+      {
                 <button onClick={toggleNav} className={css.navToggle}>
                   <Image
                     src="/hamburger.svg"

@@ -1,8 +1,5 @@
 import Head from 'next/head'
-import React from 'react'
-import InlineCalculator from '../components/mixer-calc'
-import Page from '../page/page'
-import styles from '../styles/Home.module.css'
+import React, { JSX } from 'react'
 
 export default function GasMixer(): JSX.Element {
   return(
@@ -27,9 +24,6 @@ export default function GasMixer(): JSX.Element {
           src="https://archive.org/embed/gnomed&amp;autoplay=1&amp;mute=0" 
           width="640" 
           height="480" 
-          frameBorder="0" 
-          webkitAllowFullScreen={true} 
-          mozAllowFullScreen={true} 
           allowFullScreen={true} 
           style={{
             border: '5px solid hotpink',
