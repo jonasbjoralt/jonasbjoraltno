@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import css from "./footer.module.scss"; 
 
 export default function Footer(): JSX.Element {

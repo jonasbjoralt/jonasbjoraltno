@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import React, {useEffect, useState} from 'react'; 
+import React, {JSX, useEffect, useState} from 'react'; 
 import styles from '../styles/Form.module.css';
 import calculateBlenderSettings from '../utils/blender-calculations';
 import { useInput } from '../utils/useInput';

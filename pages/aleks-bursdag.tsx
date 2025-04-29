@@ -5,7 +5,7 @@ export default function GasMixer(): JSX.Element {
   return(
     <>
       <Head>
-        <title>ÙwÚ Grattis! x'D </title>
+        <title>ÙwÚ Grattis! xD </title>
         <link rel="icon" href="whale.png" />
       </Head>
       <main>
@@ -33,7 +33,7 @@ export default function GasMixer(): JSX.Element {
             display: 'block'
           }}
         /> 
-        </main>
+      </main>
     </>
   )
 }

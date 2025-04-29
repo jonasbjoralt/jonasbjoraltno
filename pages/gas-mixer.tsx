@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { JSX } from 'react'
 import InlineCalculator from '../components/mixer-calc'
 import Page from '../page/page'
-import styles from '../styles/Home.module.css'
 
 export default function GasMixer(): JSX.Element {
   return(

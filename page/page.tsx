@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import Footer from "../footer/footer";
 import Header from "../header/header"
 import css from "./page.module.scss";

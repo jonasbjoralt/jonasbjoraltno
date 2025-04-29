@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { JSX, useState } from "react";
 import Link from "next/link";
 import css from "./header.module.scss"; 
 import Image from "next/image";
@@ -30,14 +30,14 @@ export default function Header(): JSX.Element {
       </nav>
       }
       {
-                <button onClick={toggleNav} className={css.navToggle}>
-                  <Image
-                    src="/hamburger.svg"
-                    alt="Menu Icon"
-                    width={32}
-                    height={32}
-                  />
-                </button>
+        <button onClick={toggleNav} className={css.navToggle}>
+          <Image
+            src="/hamburger.svg"
+            alt="Menu Icon"
+            width={32}
+            height={32}
+          />
+        </button>
       }
     </header>
   )

@@ -2,11 +2,10 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import Page from "../page/page";
 import styles from '../styles/Form.module.css';
-import mainStyles from '../styles/Home.module.css';
 import { AtaToMeters, metersToAta } from '../utils/unitConversions';
 import  { useCheckbox, useDropDown, useInput } from '../utils/useInput';
 
-export default function GasLimits(props){
+export default function GasLimits(){
   const [oxygenPercent, oxygenInput] = useInput('Oksygen (%)');
   const [heliumPercent, heliumInput] = useInput('Helium (%)');
   const [currentDepth, currentDepthInput] = useInput('Aktuell dybde (m)');

@@ -1,7 +1,5 @@
 import React from 'react';
 import Head from 'next/head'
-import InlineCalculator from '../components/mixer-calc'
-import styles from '../styles/Home.module.css'
 import Page from '../page/page';
 import Link from 'next/link';
 
