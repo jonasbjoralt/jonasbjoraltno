@@ -64,18 +64,23 @@ export default function AleksBursdag(): JSX.Element {
     return () => window.removeEventListener('resize', update)
   }, [])
 
-  // F to open — capture gift position BEFORE the gift unmounts
+  // Single open handler used by both F-key and tap/click on mobile
+  function openGift() {
+    if (!startPosRef.current && giftRef.current) {
+      const rect = giftRef.current.getBoundingClientRect()
+      startPosRef.current = {
+        x: rect.left + rect.width / 2 - GRAPE_SIZE / 2,
+        y: rect.top + rect.height / 2 - GRAPE_SIZE / 2,
+      }
+    }
+    setOpened(true)
+  }
+
+  // F to open
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'f' || e.key === 'F') {
-        if (!startPosRef.current && giftRef.current) {
-          const rect = giftRef.current.getBoundingClientRect()
-          startPosRef.current = {
-            x: rect.left + rect.width / 2 - GRAPE_SIZE / 2,
-            y: rect.top + rect.height / 2 - GRAPE_SIZE / 2,
-          }
-        }
-        setOpened(true)
+        openGift()
       }
     }
     window.addEventListener('keydown', onKey)
@@ -196,11 +201,23 @@ export default function AleksBursdag(): JSX.Element {
         {!opened && (
           <div
             ref={giftRef}
-            aria-label="gift"
+            role="button"
+            tabIndex={0}
+            aria-label="open gift"
+            onClick={openGift}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openGift()
+              }
+            }}
             style={{
               fontSize: 'clamp(6rem, 16vw, 11rem)',
               lineHeight: 1,
               margin: '8px 0',
+              cursor: 'pointer',
+              userSelect: 'none',
+              WebkitTapHighlightColor: 'transparent',
             }}
           >
             🎁
@@ -228,7 +245,32 @@ export default function AleksBursdag(): JSX.Element {
             fontStyle: 'courier',
           }}
         >
-          {opened ? 'grapefruitgnome.mp3.exe' : "Trykk 'F' for å åpne gaven"}
+          {opened ? (
+            'grapefruitgnome.mp3.exe'
+          ) : (
+            <>
+              Trykk{' '}
+              <button
+                type="button"
+                onClick={openGift}
+                aria-label="open gift"
+                style={{
+                  fontFamily: 'inherit',
+                  fontSize: 'inherit',
+                  padding: '2px 10px',
+                  border: '1px solid #000',
+                  background: '#fff',
+                  cursor: 'pointer',
+                  borderRadius: 4,
+                  boxShadow: '2px 2px 0 #000',
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+              >
+                F
+              </button>{' '}
+              for å åpne gaven
+            </>
+          )}
         </p>
 
         <audio ref={audioRef} src={SOUND_URL} preload="auto" />
